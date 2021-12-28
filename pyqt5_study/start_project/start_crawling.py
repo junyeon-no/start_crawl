@@ -6,6 +6,7 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from webdriver import WEB_DRVER
 
 #return [ [제목,링크], [제목, 링크] ]
 def security_news_crawlling():
@@ -51,10 +52,14 @@ def signal_crawling():
 def signal2_crawling():
     base_url = "https://signal.bz/"
     signal_LIST = []
-    options = webdriver.ChromeOptions() # 옵션 생성
-    options.add_argument("headless")
+    ################################################mac 수정
+    # options = webdriver.ChromeOptions() # 옵션 생성
+    # options.add_argument("headless")
 
-    driver = webdriver.Chrome('C:\python_study\MyPyTest\chromedriver_win32\chromedriver.exe', options = options)  # 드라이버 생성
+    # driver = webdriver.Chrome('C:\python_study\MyPyTest\chromedriver_win32\chromedriver.exe', options = options)  # 드라이버 생성
+    driver_obj = WEB_DRVER()
+    driver = driver_obj.get_web_driver()
+    ################################################mac 수정
     action = ActionChains(driver)#액션 체인 생성
     driver.get(base_url)
     html = driver.page_source  # 웹드라이버 페이지 소스코드 가져오기
@@ -72,4 +77,4 @@ def signal2_crawling():
 if __name__ == "__main__" :
     print(security_news_crawlling())
     # print(signal_crawling())
-    # print(signal2_crawling())
+    print(signal2_crawling())

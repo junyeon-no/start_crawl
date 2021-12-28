@@ -11,6 +11,7 @@ import pyautogui as pg
 from time import sleep
 from music_url import set_music_url, get_music_url 
 import var
+from webdriver import WEB_DRVER ## 내가만든거
 
 class MyApp(QWidget):
     def __init__(self):
@@ -29,8 +30,11 @@ class MyApp(QWidget):
                 self.music_url = "https://www.youtube.com/watch?v=7H0XiNHHszk&list=LL&index=4&t=7762s"
             else : 
                 set_music_url(self.music_url)
+            ##############################################mac 수정
             options = webdriver.ChromeOptions()
             driver = webdriver.Chrome('C:\python_study\MyPyTest\chromedriver_win32\chromedriver.exe', options = options)  # 드라이버 생성
+
+            ##############################################mac 수정
             try : 
                 driver.get(self.music_url)
                 while(1):
